@@ -10,6 +10,7 @@
 
 @interface AppDelegate ()
 
+
 @end
 
 @implementation AppDelegate
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setupRootViewController];
     return YES;
 }
 
@@ -123,5 +125,27 @@
         }
     }
 }
+
+- (void)setupRootViewController {
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.viewController = [[UIViewController alloc]init];
+    self.viewController.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+    
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
+    
+}
+
+- (void)bootstrapApp {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+    NSError *error;
+    NSInteger count = [self.managedObjectContext countForFetchRequest:request error:&error];
+    
+    if (count == 0) {
+        
+    }
+}
+
 
 @end

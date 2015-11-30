@@ -21,6 +21,7 @@
 		B7749CF01C0CF57E005C32E8 /* Hotel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CE61C0CF57E005C32E8 /* Hotel.m */; };
 		B7749CF11C0CF57E005C32E8 /* Guest+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CE81C0CF57E005C32E8 /* Guest+CoreDataProperties.m */; };
 		B7749CF21C0CF57E005C32E8 /* Guest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CEA1C0CF57E005C32E8 /* Guest.m */; };
+		B7749CF61C0CFEED005C32E8 /* hotels.json in Resources */ = {isa = PBXBuildFile; fileRef = B7749CF51C0CFEED005C32E8 /* hotels.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B7749CE81C0CF57E005C32E8 /* Guest+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Guest+CoreDataProperties.m"; sourceTree = "<group>"; };
 		B7749CE91C0CF57E005C32E8 /* Guest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guest.h; sourceTree = "<group>"; };
 		B7749CEA1C0CF57E005C32E8 /* Guest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guest.m; sourceTree = "<group>"; };
+		B7749CF51C0CFEED005C32E8 /* hotels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hotels.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,6 @@
 				B7749CAB1C0CF028005C32E8 /* AppDelegate.m */,
 				B7749CAD1C0CF028005C32E8 /* ViewController.h */,
 				B7749CAE1C0CF028005C32E8 /* ViewController.m */,
-				B7749CB61C0CF028005C32E8 /* Assets.xcassets */,
 				B7749CB81C0CF028005C32E8 /* LaunchScreen.storyboard */,
 				B7749CBB1C0CF028005C32E8 /* Info.plist */,
 				B7749CB31C0CF028005C32E8 /* HotelsManager.xcdatamodeld */,
@@ -99,6 +100,8 @@
 		B7749CA71C0CF028005C32E8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B7749CB61C0CF028005C32E8 /* Assets.xcassets */,
+				B7749CF51C0CFEED005C32E8 /* hotels.json */,
 				B7749CA81C0CF028005C32E8 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -192,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7749CF61C0CFEED005C32E8 /* hotels.json in Resources */,
 				B7749CBA1C0CF028005C32E8 /* LaunchScreen.storyboard in Resources */,
 				B7749CB71C0CF028005C32E8 /* Assets.xcassets in Resources */,
 			);
