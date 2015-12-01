@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "HotelsViewController.h"
+#import "DateViewController.h"
 
 @interface ViewController ()
 
@@ -49,6 +50,8 @@
     [lookupBotton setBackgroundColor:[UIColor redColor]];
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+    [bookButton addTarget:self action:@selector(bookButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+
     
     float screenHeight = CGRectGetHeight([[UIScreen mainScreen]bounds]) - 64.0;
     float screenHeightByThree = screenHeight/3;
@@ -92,6 +95,10 @@
 
 - (void)browseButtonSelected {
     [self.navigationController pushViewController:[[HotelsViewController alloc]init] animated:YES];
+}
+
+- (void)bookButtonSelected {
+    [self.navigationController pushViewController:[[DateViewController alloc]init] animated:YES];
 }
 
 @end
