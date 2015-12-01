@@ -171,6 +171,7 @@
                 newRoom.roomNumber = room[@"number"];
                 newRoom.beds = room[@"beds"];
                 newRoom.priceRate = room[@"rate"];
+                newRoom.hotel = newHotel;
             }
         }
         
