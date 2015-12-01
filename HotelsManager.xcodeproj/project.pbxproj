@@ -22,6 +22,8 @@
 		B7749CF11C0CF57E005C32E8 /* Guest+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CE81C0CF57E005C32E8 /* Guest+CoreDataProperties.m */; };
 		B7749CF21C0CF57E005C32E8 /* Guest.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CEA1C0CF57E005C32E8 /* Guest.m */; };
 		B7749CF61C0CFEED005C32E8 /* hotels.json in Resources */ = {isa = PBXBuildFile; fileRef = B7749CF51C0CFEED005C32E8 /* hotels.json */; };
+		B7749CFA1C0D2F81005C32E8 /* HotelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CF91C0D2F81005C32E8 /* HotelsViewController.m */; };
+		B7749CFD1C0D3DF7005C32E8 /* RoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749CFC1C0D3DF7005C32E8 /* RoomsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,10 @@
 		B7749CE91C0CF57E005C32E8 /* Guest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guest.h; sourceTree = "<group>"; };
 		B7749CEA1C0CF57E005C32E8 /* Guest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guest.m; sourceTree = "<group>"; };
 		B7749CF51C0CFEED005C32E8 /* hotels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hotels.json; sourceTree = "<group>"; };
+		B7749CF81C0D2F81005C32E8 /* HotelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelsViewController.h; sourceTree = "<group>"; };
+		B7749CF91C0D2F81005C32E8 /* HotelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelsViewController.m; sourceTree = "<group>"; };
+		B7749CFB1C0D3DF7005C32E8 /* RoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomsViewController.h; sourceTree = "<group>"; };
+		B7749CFC1C0D3DF7005C32E8 /* RoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +91,9 @@
 		B7749CA61C0CF028005C32E8 /* HotelsManager */ = {
 			isa = PBXGroup;
 			children = (
+				B7749CF71C0D2EB2005C32E8 /* Views */,
 				B7749CAA1C0CF028005C32E8 /* AppDelegate.h */,
 				B7749CAB1C0CF028005C32E8 /* AppDelegate.m */,
-				B7749CAD1C0CF028005C32E8 /* ViewController.h */,
-				B7749CAE1C0CF028005C32E8 /* ViewController.m */,
 				B7749CB81C0CF028005C32E8 /* LaunchScreen.storyboard */,
 				B7749CBB1C0CF028005C32E8 /* Info.plist */,
 				B7749CB31C0CF028005C32E8 /* HotelsManager.xcdatamodeld */,
@@ -136,6 +141,19 @@
 				B7749CE81C0CF57E005C32E8 /* Guest+CoreDataProperties.m */,
 			);
 			name = "Data Properties";
+			sourceTree = "<group>";
+		};
+		B7749CF71C0D2EB2005C32E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7749CAD1C0CF028005C32E8 /* ViewController.h */,
+				B7749CAE1C0CF028005C32E8 /* ViewController.m */,
+				B7749CF81C0D2F81005C32E8 /* HotelsViewController.h */,
+				B7749CF91C0D2F81005C32E8 /* HotelsViewController.m */,
+				B7749CFB1C0D3DF7005C32E8 /* RoomsViewController.h */,
+				B7749CFC1C0D3DF7005C32E8 /* RoomsViewController.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7749CED1C0CF57E005C32E8 /* Room+CoreDataProperties.m in Sources */,
+				B7749CFA1C0D2F81005C32E8 /* HotelsViewController.m in Sources */,
 				B7749CEC1C0CF57E005C32E8 /* Reservation.m in Sources */,
 				B7749CB51C0CF028005C32E8 /* HotelsManager.xcdatamodeld in Sources */,
 				B7749CAF1C0CF028005C32E8 /* ViewController.m in Sources */,
@@ -218,6 +237,7 @@
 				B7749CEF1C0CF57E005C32E8 /* Hotel+CoreDataProperties.m in Sources */,
 				B7749CEE1C0CF57E005C32E8 /* Room.m in Sources */,
 				B7749CF01C0CF57E005C32E8 /* Hotel.m in Sources */,
+				B7749CFD1C0D3DF7005C32E8 /* RoomsViewController.m in Sources */,
 				B7749CA91C0CF028005C32E8 /* main.m in Sources */,
 				B7749CF11C0CF57E005C32E8 /* Guest+CoreDataProperties.m in Sources */,
 			);
