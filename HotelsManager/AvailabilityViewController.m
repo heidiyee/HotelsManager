@@ -9,7 +9,7 @@
 #import "AvailabilityViewController.h"
 #import "Hotel.h"
 #import "Room.h"
-#import "AppDelegate.h"
+#import "CoreDataStack.h"
 #import "BookViewController.h"
 
 
@@ -24,12 +24,8 @@
 
 - (NSArray *)dataSource {
     if (!_dataSource) {
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-        
-        
-        
         
         NSError *fetchError;
         

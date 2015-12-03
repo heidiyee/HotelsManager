@@ -9,7 +9,7 @@
 #import "DateViewController.h"
 #import "Reservation.h"
 #import "AvailabilityViewController.h"
-#import "AppDelegate.h"
+#import "CoreDataStack.h"
 
 @interface DateViewController ()
 
@@ -96,12 +96,11 @@
         [self presentViewController:alertController animated:YES completion:nil]; return;
     }
     
-    AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     
-    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:delegate.managedObjectContext];
+    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:[[CoreDataStack sharedCoreDataStack]managedObjectContext]];
     
     reservation.startDate = startDate;
     reservation.endDate = endDate;

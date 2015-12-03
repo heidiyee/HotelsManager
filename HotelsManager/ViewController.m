@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import "HotelsViewController.h"
 #import "DateViewController.h"
-#import "AppDelegate.h"
 #import "LookUpViewController.h"
+#import "CoreDataStack.h"
 
 @interface ViewController ()
 
@@ -37,9 +37,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Guest"];
     

@@ -7,9 +7,9 @@
 //
 
 #import "HotelsViewController.h"
-#import "AppDelegate.h"
 #import "Hotel.h"
 #import "RoomsViewController.h"
+#import "CoreDataStack.h"
 
 @interface HotelsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -22,8 +22,7 @@
 
 - (NSArray *)dataSource {
     if (!_dataSource) {
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
         
         NSError *fetchError;

@@ -7,7 +7,6 @@
 //
 
 #import "RoomsViewController.h"
-#import "AppDelegate.h"
 
 @interface RoomsViewController () <UITableViewDataSource, UITableViewDelegate>
 

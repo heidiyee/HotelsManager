@@ -8,7 +8,7 @@
 
 #import "BookViewController.h"
 #import "Guest.h"
-#import "AppDelegate.h"
+#import "CoreDataStack.h"
 
 @interface BookViewController ()
 
@@ -74,9 +74,8 @@
 }
 
 - (void)saveButtonSelected:(UIBarButtonItem *)sender {
-    AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
     
-    Guest *guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:delegate.managedObjectContext];
+    Guest *guest = [NSEntityDescription insertNewObjectForEntityForName:@"Guest" inManagedObjectContext:[[CoreDataStack sharedCoreDataStack]managedObjectContext]];
     guest.name = self.nameTextField.text;
     guest.reservation = self.room.reservation;
     
