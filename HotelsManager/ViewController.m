@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "HotelsViewController.h"
 #import "DateViewController.h"
+#import "AppDelegate.h"
+#import "LookUpViewController.h"
 
 @interface ViewController ()
 
@@ -32,6 +34,20 @@
     [self setupCustomLayout];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Guest"];
+    
+    NSArray *guests = [context executeFetchRequest:request error:nil];
+    
+    NSLog(@"%li", guests.count);
+}
+
 - (void) setupCustomLayout {
     UIButton *browseButton = [[UIButton alloc]init];
     UIButton *bookButton = [[UIButton alloc]init];
@@ -51,6 +67,7 @@
     
     [browseButton addTarget:self action:@selector(browseButtonSelected) forControlEvents:UIControlEventTouchUpInside];
     [bookButton addTarget:self action:@selector(bookButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+    [lookupBotton addTarget:self action:@selector(lookupButtonSelected) forControlEvents:UIControlEventTouchUpInside];
 
     
     float screenHeight = CGRectGetHeight([[UIScreen mainScreen]bounds]) - 64.0;
@@ -99,6 +116,10 @@
 
 - (void)bookButtonSelected {
     [self.navigationController pushViewController:[[DateViewController alloc]init] animated:YES];
+}
+
+- (void)lookupButtonSelected {
+    [self.navigationController pushViewController:[[LookUpViewController alloc]init] animated:YES];
 }
 
 @end

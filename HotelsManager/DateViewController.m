@@ -7,6 +7,9 @@
 //
 
 #import "DateViewController.h"
+#import "Reservation.h"
+#import "AvailabilityViewController.h"
+#import "AppDelegate.h"
 
 @interface DateViewController ()
 
@@ -80,10 +83,11 @@
 
 - (void)doneButtonSelected {
     [self.date descriptionWithLocale:self.locale];
-    NSDate *startDate = [self.startDatePicker date];
+    NSDate *startDate = self.startDatePicker.date;
     NSDate *endDate = self.endDatePicker.date;
     
     if ([startDate timeIntervalSinceDate:endDate] > 0) {
+        //NSLog(@"%f", [startDate timeIntervalSinceDate:endDate]);
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Nope" message:@"Please choose an end date that is after your start date" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             self.endDatePicker.date = self.startDatePicker.date;
@@ -91,6 +95,20 @@
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil]; return;
     }
+    
+    AppDelegate *delegate = [[UIApplication sharedApplication]delegate];
+    
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    
+    Reservation *reservation = [NSEntityDescription insertNewObjectForEntityForName:@"Reservation" inManagedObjectContext:delegate.managedObjectContext];
+    
+    reservation.startDate = startDate;
+    reservation.endDate = endDate;
+    
+    AvailabilityViewController *availabilityViewController = [[AvailabilityViewController alloc]init];
+    availabilityViewController.reservationNew = reservation;
+    [self.navigationController pushViewController:availabilityViewController animated:YES];
     
     
 }

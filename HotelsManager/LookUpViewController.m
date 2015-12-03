@@ -1,35 +1,28 @@
 //
-//  AvailabilityViewController.m
+//  LookUpViewController.m
 //  HotelsManager
 //
-//  Created by Heidi Yee on 12/1/15.
+//  Created by Heidi Yee on 12/2/15.
 //  Copyright © 2015 Heidi Yee. All rights reserved.
 //
 
-#import "AvailabilityViewController.h"
-#import "Hotel.h"
-#import "Room.h"
-#import "AppDelegate.h"
-#import "BookViewController.h"
+#import "LookUpViewController.h"
+#import "CoreDataStack.h"
 
+@interface LookUpViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@interface AvailabilityViewController () <UITableViewDataSource, UITableViewDelegate>
-
-@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation AvailabilityViewController
+@implementation LookUpViewController
 
 - (NSArray *)dataSource {
     if (!_dataSource) {
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
         NSManagedObjectContext *context = delegate.managedObjectContext;
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-        
-        
-        
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
         
         NSError *fetchError;
         
@@ -42,15 +35,15 @@
     return _dataSource;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    //NSLog(@"%@", self.reservationNew.endDate);
-    [self setupTableView];
-}
 
 -(void)loadView {
     [super loadView];
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,10 +51,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - TableView
-
 - (void)setupTableView {
-    
     self.tableView = [[UITableView alloc]init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -81,30 +71,6 @@
     tableViewTopConstraint.active = YES;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataSource count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    
-    Room *room = self.dataSource[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"Hotel: %@ Room: %i (%i beds, $%0.2f per night)", room.hotel.name, room.roomNumber.intValue, room.beds.intValue, room.priceRate.floatValue];
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Room *room = self.dataSource[indexPath.row];
-    room.reservation = self.reservationNew;
-    BookViewController *bookViewController = [[BookViewController alloc]init];
-    bookViewController.room = room;
-    
-    [self.navigationController pushViewController:bookViewController animated:YES];
-}
 
 
 @end
