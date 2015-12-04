@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "CoreDataStack.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
+
 
 @interface AppDelegate ()
 
@@ -21,6 +25,8 @@
     // Override point for customization after application launch.
     [self setupRootViewController];
     [self bootstrapApp];
+    [Fabric with:@[[Crashlytics class]]];
+    [Fabric with:@[[Answers class]]];
     return YES;
 }
 

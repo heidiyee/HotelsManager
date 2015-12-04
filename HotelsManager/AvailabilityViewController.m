@@ -26,8 +26,12 @@
     if (!_dataSource) {
         NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
+        //request.predicate = [NSPredicate predicateWithFormat:<#(nonnull NSString *), ...#>]
         
         NSError *fetchError;
+        //NSArray *results = [context executeFetchRequest:request error:&fetchError];
+        
+        
         
         _dataSource = [context executeFetchRequest:request error:&fetchError];
         

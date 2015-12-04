@@ -30,6 +30,9 @@
 		B7749D121C0FCA80005C32E8 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749D111C0FCA80005C32E8 /* CoreDataStack.m */; };
 		B7749D1C1C0FCEFE005C32E8 /* LookUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749D1B1C0FCEFE005C32E8 /* LookUpViewController.m */; };
 		B7749D241C0FE899005C32E8 /* HotelsManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749D231C0FE899005C32E8 /* HotelsManagerTests.m */; };
+		B7749D2E1C10E4E3005C32E8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7749D2C1C10E4E3005C32E8 /* Fabric.framework */; };
+		B7749D2F1C10E4E3005C32E8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7749D2D1C10E4E3005C32E8 /* Crashlytics.framework */; };
+		B7749D341C1116CD005C32E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7749D331C1116CD005C32E8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,11 @@
 		B7749D211C0FE899005C32E8 /* HotelsManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelsManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7749D231C0FE899005C32E8 /* HotelsManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotelsManagerTests.m; sourceTree = "<group>"; };
 		B7749D251C0FE899005C32E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7749D2C1C10E4E3005C32E8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
+		B7749D2D1C10E4E3005C32E8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
+		B7749D301C10F6F9005C32E8 /* HotelsManager_1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotelsManager_1.1.xcdatamodel; sourceTree = "<group>"; };
+		B7749D331C1116CD005C32E8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B7749D351C1116E7005C32E8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7749D2F1C10E4E3005C32E8 /* Crashlytics.framework in Frameworks */,
+				B7749D2E1C10E4E3005C32E8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +144,6 @@
 				B7749CAB1C0CF028005C32E8 /* AppDelegate.m */,
 				B7749D101C0FCA80005C32E8 /* CoreDataStack.h */,
 				B7749D111C0FCA80005C32E8 /* CoreDataStack.m */,
-				B7749CB81C0CF028005C32E8 /* LaunchScreen.storyboard */,
 				B7749CBB1C0CF028005C32E8 /* Info.plist */,
 				B7749CB31C0CF028005C32E8 /* HotelsManager.xcdatamodeld */,
 				B7749CA71C0CF028005C32E8 /* Supporting Files */,
@@ -145,9 +154,13 @@
 		B7749CA71C0CF028005C32E8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B7749CB81C0CF028005C32E8 /* LaunchScreen.storyboard */,
+				B7749D2C1C10E4E3005C32E8 /* Fabric.framework */,
+				B7749D2D1C10E4E3005C32E8 /* Crashlytics.framework */,
 				B7749CB61C0CF028005C32E8 /* Assets.xcassets */,
 				B7749CF51C0CFEED005C32E8 /* hotels.json */,
 				B7749CA81C0CF028005C32E8 /* main.m */,
+				B7749D331C1116CD005C32E8 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -247,6 +260,7 @@
 				B7749CA01C0CF028005C32E8 /* Sources */,
 				B7749CA11C0CF028005C32E8 /* Frameworks */,
 				B7749CA21C0CF028005C32E8 /* Resources */,
+				B7749D2B1C10E490005C32E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -318,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7749CF61C0CFEED005C32E8 /* hotels.json in Resources */,
+				B7749D341C1116CD005C32E8 /* Localizable.strings in Resources */,
 				B7749CBA1C0CF028005C32E8 /* LaunchScreen.storyboard in Resources */,
 				B7749CB71C0CF028005C32E8 /* Assets.xcassets in Resources */,
 			);
@@ -331,6 +346,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7749D2B1C10E490005C32E8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c50bf9f13c20f075af92abf8c1f54b5ec99f7861 6d369ce8f545c470cafd74b1cfeaf43dbd41ffaf96bd914c675fffec84a55af5";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B7749CA01C0CF028005C32E8 /* Sources */ = {
@@ -382,6 +413,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B7749CB91C0CF028005C32E8 /* Base */,
+				B7749D351C1116E7005C32E8 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -475,6 +507,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HotelsManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,6 +524,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HotelsManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -553,9 +594,10 @@
 		B7749CB31C0CF028005C32E8 /* HotelsManager.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B7749D301C10F6F9005C32E8 /* HotelsManager_1.1.xcdatamodel */,
 				B7749CB41C0CF028005C32E8 /* HotelsManager.xcdatamodel */,
 			);
-			currentVersion = B7749CB41C0CF028005C32E8 /* HotelsManager.xcdatamodel */;
+			currentVersion = B7749D301C10F6F9005C32E8 /* HotelsManager_1.1.xcdatamodel */;
 			path = HotelsManager.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

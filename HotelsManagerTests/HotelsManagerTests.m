@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "CoreDataStack.h"
+#import "Hotel.h"
 
 @interface HotelManagerTests : XCTestCase
 
@@ -48,5 +49,6 @@
     XCTAssertNotNil(result, @"Result array should NOT be nil.");
     XCTAssertTrue([count intValue] > 0, @"Number of objects in the database after seeding should be greater then 0.");
 }
+
 
 @end

@@ -11,6 +11,8 @@
 #import "DateViewController.h"
 #import "LookUpViewController.h"
 #import "CoreDataStack.h"
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface ViewController ()
 
@@ -21,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setTitle:@"Hotels"];
+    [self.navigationItem setTitle:NSLocalizedString(@"Hotels", @"hotel's vc title")];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,12 +40,13 @@
     [super viewWillAppear:animated];
     
     NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Guest"];
-    
     NSArray *guests = [context executeFetchRequest:request error:nil];
-    
     NSLog(@"%li", guests.count);
+    
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]initWithTitle:@"Crash" style:UIBarButtonItemStylePlain target:self action:@selector(crashButtonTapped:)];
+    [self.navigationItem setRightBarButtonItem:button];
+
 }
 
 - (void) setupCustomLayout {
@@ -119,5 +122,10 @@
 - (void)lookupButtonSelected {
     [self.navigationController pushViewController:[[LookUpViewController alloc]init] animated:YES];
 }
+
+- (IBAction)crashButtonTapped:(id)sender {
+    [[Crashlytics sharedInstance] crash];
+}
+
 
 @end
