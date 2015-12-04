@@ -32,7 +32,7 @@
 		B7749D241C0FE899005C32E8 /* HotelsManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B7749D231C0FE899005C32E8 /* HotelsManagerTests.m */; };
 		B7749D2E1C10E4E3005C32E8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7749D2C1C10E4E3005C32E8 /* Fabric.framework */; };
 		B7749D2F1C10E4E3005C32E8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7749D2D1C10E4E3005C32E8 /* Crashlytics.framework */; };
-		B7749D341C1116CD005C32E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7749D331C1116CD005C32E8 /* Localizable.strings */; };
+		B7749D371C112073005C32E8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B7749D391C112073005C32E8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +93,9 @@
 		B7749D2C1C10E4E3005C32E8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Fabric.framework; sourceTree = "<group>"; };
 		B7749D2D1C10E4E3005C32E8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Crashlytics.framework; sourceTree = "<group>"; };
 		B7749D301C10F6F9005C32E8 /* HotelsManager_1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HotelsManager_1.1.xcdatamodel; sourceTree = "<group>"; };
-		B7749D331C1116CD005C32E8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		B7749D351C1116E7005C32E8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B7749D361C112048005C32E8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B7749D381C112073005C32E8 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B7749D3A1C11207B005C32E8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +161,7 @@
 				B7749CB61C0CF028005C32E8 /* Assets.xcassets */,
 				B7749CF51C0CFEED005C32E8 /* hotels.json */,
 				B7749CA81C0CF028005C32E8 /* main.m */,
-				B7749D331C1116CD005C32E8 /* Localizable.strings */,
+				B7749D391C112073005C32E8 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -332,7 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7749CF61C0CFEED005C32E8 /* hotels.json in Resources */,
-				B7749D341C1116CD005C32E8 /* Localizable.strings in Resources */,
+				B7749D371C112073005C32E8 /* Localizable.strings in Resources */,
 				B7749CBA1C0CF028005C32E8 /* LaunchScreen.storyboard in Resources */,
 				B7749CB71C0CF028005C32E8 /* Assets.xcassets in Resources */,
 			);
@@ -413,9 +414,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				B7749CB91C0CF028005C32E8 /* Base */,
-				B7749D351C1116E7005C32E8 /* zh-Hant */,
+				B7749D361C112048005C32E8 /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B7749D391C112073005C32E8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7749D381C112073005C32E8 /* zh-Hant */,
+				B7749D3A1C11207B005C32E8 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -457,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -495,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
