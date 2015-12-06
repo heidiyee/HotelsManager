@@ -13,38 +13,56 @@
 #import "BookViewController.h"
 
 
-@interface AvailabilityViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AvailabilityViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSArray *dataSource;
+//@property (strong, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsVC;
 
 @end
 
 @implementation AvailabilityViewController
 
-- (NSArray *)dataSource {
-    if (!_dataSource) {
+- (NSFetchedResultsController *)fetchedResultsVC {
+    if (!_fetchedResultsVC) {
         NSManagedObjectContext *context = [[CoreDataStack sharedCoreDataStack]managedObjectContext];
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
-        //request.predicate = [NSPredicate predicateWithFormat:<#(nonnull NSString *), ...#>]
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Reservation"];
+        request.predicate = [NSPredicate predicateWithFormat:@"startDate <= %@ AND endDate >= %@", self.reservationNew.startDate, self.reservationNew.endDate];
         
+        NSArray *allReservation = [[NSArray alloc]init];
         NSError *fetchError;
-        //NSArray *results = [context executeFetchRequest:request error:&fetchError];
+        allReservation = [context executeFetchRequest:request error:&fetchError];
         
+        if (fetchError) {
+            NSLog(@"Error fetching from Core Data.");
+        }
         
+        NSMutableArray *results = [[NSMutableArray alloc]init];
+        for (Reservation *reservation in allReservation) {
+            if (reservation.room) {
+                [results addObject:reservation.room];
+            }
+        }
         
-        _dataSource = [context executeFetchRequest:request error:&fetchError];
+        NSFetchRequest *checkRequest = [NSFetchRequest fetchRequestWithEntityName:@"Room"];
+        checkRequest.predicate = [NSPredicate predicateWithFormat:@"NOT self IN %@", results];
+        checkRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"hotel.name" ascending:YES]];
+        
+        _fetchedResultsVC = [[NSFetchedResultsController alloc]initWithFetchRequest:checkRequest managedObjectContext:context sectionNameKeyPath:@"hotel.name" cacheName:nil];
+        _fetchedResultsVC.delegate = self;
+        
+        [_fetchedResultsVC performFetch:&fetchError];
+        
         
         if (fetchError) {
             NSLog(@"Error fetching from Core Data.");
         }
     }
-    return _dataSource;
+    return _fetchedResultsVC;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"%@", self.reservationNew.endDate);
     [self setupTableView];
 }
 
@@ -81,25 +99,45 @@
     tableViewTopConstraint.active = YES;
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.fetchedResultsVC.sections > 0) {
+        return self.fetchedResultsVC.sections.count;
+    }
+    return 0;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (self.fetchedResultsVC.sections > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsVC sections] objectAtIndex:section];
+        return [sectionInfo name];
+    }
+    return @"Hotel";
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataSource count];
+    if ([[self.fetchedResultsVC sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsVC sections] objectAtIndex:section];
+        return [sectionInfo numberOfObjects];
+    } else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    Room *room = self.dataSource[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"Hotel: %@ Room: %i (%i beds, $%0.2f per night)", room.hotel.name, room.roomNumber.intValue, room.beds.intValue, room.priceRate.floatValue];
+    Room *room = [self.fetchedResultsVC objectAtIndexPath:indexPath];
+
+    cell.textLabel.text = [NSString stringWithFormat:@"Room: %i (%i beds, $%0.2f per night)", room.roomNumber.intValue, room.beds.intValue, room.priceRate.floatValue];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Room *room = self.dataSource[indexPath.row];
+    Room *room = [self.fetchedResultsVC objectAtIndexPath:indexPath];
     room.reservation = self.reservationNew;
+    self.reservationNew.room = room;
     BookViewController *bookViewController = [[BookViewController alloc]init];
     bookViewController.room = room;
     

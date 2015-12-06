@@ -38,7 +38,7 @@
     UILabel *label = [[UILabel alloc]init];
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
-    NSString *labelString = [NSString stringWithFormat:@"Please fill in your name to reserve the follow room: Room number %@ at Hotel %@, From %@ to %@", self.room.roomNumber, self.room.hotel.name, [NSDateFormatter localizedStringFromDate:self.room.reservation.startDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle] , [NSDateFormatter localizedStringFromDate:self.room.reservation.endDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]];
+    NSString *labelString = [NSString stringWithFormat:@"Please fill in your name to reserve the follow room: Room number %@ at %@, From %@ to %@", self.room.roomNumber, self.room.hotel.name, [NSDateFormatter localizedStringFromDate:self.room.reservation.startDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle] , [NSDateFormatter localizedStringFromDate:self.room.reservation.endDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle]];
     label.text = labelString;
     [label setTranslatesAutoresizingMaskIntoConstraints:NO];
     
