@@ -106,13 +106,13 @@
     return 0;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.fetchedResultsVC.sections > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsVC sections] objectAtIndex:section];
-        return [sectionInfo name];
-    }
-    return @"Hotel";
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (self.fetchedResultsVC.sections > 0) {
+//        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsVC sections] objectAtIndex:section];
+//        return [sectionInfo name];
+//    }
+//    return @"Hotel";
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if ([[self.fetchedResultsVC sections] count] > 0) {
@@ -142,6 +142,36 @@
     bookViewController.room = room;
     
     [self.navigationController pushViewController:bookViewController animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 130.0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if ([[self.fetchedResultsVC sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsVC sections] objectAtIndex:section];
+        NSString *hotelName = [sectionInfo name];
+        NSString *hotelImageName = [[hotelName stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", hotelImageName]];
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:image];
+        imageView.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 130.0);
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        
+        return imageView;
+    } else {
+        UIImage *headerImage = [UIImage imageNamed:@"hotel"];
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:headerImage];
+        
+        imageView.frame = CGRectMake(0.0, 0.0, CGRectGetWidth(self.view.frame), 130.0);
+        
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        
+        return imageView;
+    }
 }
 
 

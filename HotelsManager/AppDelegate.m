@@ -25,6 +25,7 @@
     // Override point for customization after application launch.
     [self setupRootViewController];
     [self bootstrapApp];
+    [self addImages];
     [Fabric with:@[[Crashlytics class]]];
     [Fabric with:@[[Answers class]]];
     return YES;
@@ -109,6 +110,23 @@
             NSLog(@"%@", saveError.description);
         }
     }
+}
+
+- (void)addImages {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Hotel"];
+    NSError *error;
+    NSArray *hotels = [[CoreDataStack sharedCoreDataStack].managedObjectContext executeFetchRequest:request error:&error];
+    
+    for (Hotel *hotel in hotels) {
+        NSString *hotelImageName = [[hotel.name stringByReplacingOccurrencesOfString:@" " withString:@""] lowercaseString];
+        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg", hotelImageName]];
+        hotel.image = UIImageJPEGRepresentation(image, 0.8);
+    }
+    
+    // ... Save ...
+    [[CoreDataStack sharedCoreDataStack].managedObjectContext save:nil];
+    
 }
 
 
