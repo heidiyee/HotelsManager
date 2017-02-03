@@ -6,7 +6,7 @@
 //  Copyright © 2015 Heidi Yee. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface ViewController : UIViewController
 
